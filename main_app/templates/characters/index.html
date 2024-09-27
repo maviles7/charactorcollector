@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/characters/character-index.css' %}"/>
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>Character List</h1>
+</section>
+
+<section class="card-container">
+  {% for character in characters %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img
+            src="{% static 'images/mirm-WIP.svg' %}"
+            alt="placeholder image what says 'mirm WIP' followed by cute skeleton hand with 'ok' hand signal"
+          />
+        </div>
+        <h2 class="card-title">{{ character.main_indentity }}</h2>
+        <p> {{ character.universe }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
