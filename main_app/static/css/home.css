@@ -24,8 +24,11 @@ main {
   }
   
   .character-container {
+    display: flexbox;
+    justify-content: center;
+    align-content: center;
     img {
-        width: 50%;
+        width: 100%;
     }
   }
   

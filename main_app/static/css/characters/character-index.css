@@ -6,6 +6,8 @@
 }
 
 .card {
+  display: flexbox;
+  justify-content: center;
   align-items: center;
   width: 27%;
   margin: 10px;
@@ -14,8 +16,12 @@
 }
 
 .card-content {
-  padding: 10px;
-  width: 50%;
+  display: flexbox;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .card-img-container {
