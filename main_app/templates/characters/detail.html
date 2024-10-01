@@ -9,13 +9,16 @@
     <img src="{% static 'images/mirm-WIP.svg' %}" alt="mirm logo" />
   </div>
   <div class="character-details">
-    <h1>{{ character.main_indentity }}</h1>
-    {% comment %} {% if cat.age > 0 %}
-      <h2>A {{ cat.age }} year old {{ cat.breed }}</h2>
-    {% else %}
-      <h2>A {{ cat.breed }} kitten.</h2>
-    {% endif %} {% endcomment %}
+    <h1>{{ character.main_identity }}</h1>
     <p>{{ character.universe }}</p>
+    <h3>other names and identities:</h3>
+    {% for other_name in other_names %}
+      <p>{{ other_name }}</p>
+    {% endfor%}
+    <h3>powers:</h3>
+    {% for power in powers %}
+      <p>{{ power }}</p>
+    {% endfor %}
   </div>
 </section>
 {% endblock %}
