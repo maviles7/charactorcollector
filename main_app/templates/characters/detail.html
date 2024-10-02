@@ -11,20 +11,37 @@
   <div class="character-details">
     <h1>{{ character.main_identity }}</h1>
     <p>{{ character.universe }}</p>
-    <h3>other names and identities:</h3>
-    {% for other_name in other_names %}
-      <p>{{ other_name }}</p>
-    {% endfor%}
-    <h3>powers:</h3>
-    {% for power in powers %}
-      <p>{{ power }}</p>
-    {% endfor %}
-
     <div>
         <a href="{% url 'character-update' character.id %}" class="btn warn">edit</a>
         <a href="{% url 'character-delete' character.id %}" class="btn danger">delete</a>
     </div>
-    
   </div>
+
+  <h3>Add Name/Alias</h3>
+  <form action="{% url 'add-name' character.id %}" method="POST" class="alias-content" autocomplete="off">
+    {% csrf_token %}
+    {{ name_form.as_p }}
+    <button type="submit" class="btn-submit">add name/alias</button>
+  </form>
+
+  <h3>Other Names/Alias</h3>
+  {% if character.name_set.count %}
+  <table>
+    <thead>
+      <th>names/alias</th>
+    </thead>
+    <tbody>
+      {% for name in character.name_set.all %}
+        <tr>
+          <td>{{name.alias}}</td>
+        <tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div>
+    <p>Just a one-name wonder like Cher.</p>
+  </div>
+  {% endif %}
 </section>
 {% endblock %}
