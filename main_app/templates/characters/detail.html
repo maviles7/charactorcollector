@@ -19,6 +19,12 @@
     {% for power in powers %}
       <p>{{ power }}</p>
     {% endfor %}
+
+    <div>
+        <a href="{% url 'character-update' character.id %}" class="btn warn">edit</a>
+        <a href="{% url 'character-delete' character.id %}" class="btn danger">delete</a>
+    </div>
+    
   </div>
 </section>
 {% endblock %}
