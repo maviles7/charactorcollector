@@ -10,4 +10,9 @@ urlpatterns = [
     path('characters/<int:pk>/update', views.CharacterUpdate.as_view(), name='character-update'),
     path('characters/<int:pk>/delete', views.CharacterDelete.as_view(), name='character-delete'),
     path('characters/<int:character_id>/add-name/', views.add_name, name='add-name'),
+    path('powers/create/', views.PowerCreate.as_view(), name='power-create'),
+    path('powers/<int:pk>', views.PowerDetail.as_view(), name='power-detail'),
+    path('powers/', views.PowerList.as_view(), name='power-index'),
+    path('powers/<int:pk>/update', views.PowerUpdate.as_view(), name='power-update'),
+    path('powers/<int:pk>/delete', views.PowerDelete.as_view(), name='power-delete'),
 ]

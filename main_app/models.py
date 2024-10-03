@@ -20,3 +20,13 @@ class Name(models.Model):
     def __str__(self):
         return f'{self.alias}'
     
+class Power(models.Model):
+    power = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse("power-detail", kwargs={"pk": self.id})
+    
+    

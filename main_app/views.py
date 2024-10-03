@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Character
+from django.views.generic import ListView, DetailView
+from .models import Character, Power
 from .forms import NameForm
 
 # Create your views here.
@@ -39,3 +40,21 @@ def add_name(request, character_id):
         new_name.character_id = character_id
         new_name.save()
     return redirect('character-detail', character_id=character_id)
+
+class PowerCreate(CreateView):
+    model = Power
+    fields = '__all__'
+
+class PowerList(ListView):
+    model = Power
+
+class PowerDetail(DetailView):
+    model = Power
+
+class PowerUpdate(UpdateView):
+    model = Power
+    fields = ['power']
+
+class PowerDelete(DeleteView):
+    model = Power
+    success_url = '/powers/'
