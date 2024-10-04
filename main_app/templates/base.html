@@ -9,20 +9,24 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'images/mirm-WIP.svg' %}" />
     <title>Character Collector</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% block head %} 
-    {% endblock %}
+  {% block head %} 
+  {% endblock %}
+  
   </head>
   <body>
     <header>
       <nav>
-        <ul>
-          <li><a href='/'>Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'character-index' %}">All Characters</a></li>
-          <li><a href="{% url 'character-create' %}">Add Character</a></li>
-          <li><a href="{% url 'power-index' %}">All Powers</a></li>
-          <li><a href="{% url 'power-create' %}">Add Power</a></li>
-        </ul>
+          <a href='/'>Home</a></li>
+          &nbsp; | &nbsp;
+          <a href="{% url 'about' %}">About</a></li>
+          &nbsp; |  &nbsp;
+          <a href="{% url 'character-index' %}">All Characters</a>
+          &nbsp; |  &nbsp;
+          <a href="{% url 'character-create' %}">Add Character</a>
+          &nbsp; |  &nbsp;
+          <a href="{% url 'power-index' %}">All Powers</a>
+          &nbsp; |  &nbsp;
+          <a href="{% url 'power-create' %}">Add Power</a>
       </nav>
     </header>
     <main>
