@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
 <link
   rel="stylesheet"
-  href="{% static 'css/characters/character-detail.css' %}"
+  href="{% static 'css/characters.css' %}"
 />
 {% endblock %} {% block content %}
 <section class="character-container">
@@ -51,4 +51,40 @@
   </div>
   {% endif %}
 </section>
+
+<section class="toys">
+  <div class="subsection-title">
+    <h2>Powers</h2>
+  </div>
+
+  <h3>{{ character.main_identity }}'s Powers</h3>
+  <div class="subsection-content">
+      {% for power in character.powers.all %}
+        <div class="character-container">
+          <a href="{% url 'power-detail' power.id %}">
+            <p>{{ power.power }}</p>
+          </a>
+          <form action="{% url 'unassociate-power' character.id power.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn submit">Remove Power</button>
+          </form>
+        {% empty %}
+          <p class="no-powers">{{character.main_identity}} doesn't have any powers!</p>
+      {% endfor %} 
+  </div>
+
+  <h3>Available Powers</h3>
+  <div class="subsection-content">
+    {% for power in powers %}
+      <div class="power-container">
+        <p>{{ power.power }}</p>
+        <form action="{% url 'associate-power' character.id power.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">Give Power</button>
+        </form>
+      </div> 
+    {% endfor %}
+  </div>
+</section>
+
 {% endblock %}
